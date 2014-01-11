@@ -31,9 +31,7 @@ class EventTest(TestCase):
 
     def test_event_detail(self):
         event = Event.objects.first()
-        data = {
-            'pk': event.id
-        }
+        data = { 'pk': event.id }
         response = self.client.get(reverse('event_detail', kwargs=data))
         self.assertTrue(response.status_code, 200)
 

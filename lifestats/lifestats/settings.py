@@ -103,6 +103,7 @@ STATICFILES_FINDERS = (
 
 BOWER_INSTALLED_APPS = (
     'bootstrap',
+    'jquery-ui',
 )
 
 INTERNAL_IPS = '192.168.1.9'

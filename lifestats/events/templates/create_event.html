@@ -1,7 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Create Event{% endblock %}
 {% block events_active %}class="active"{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'jquery-ui/themes/base/jquery.ui.all.css' %}" media="screen" />
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'jquery-ui/ui/minified/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/create_event.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 <h1>Create Event</h1>
