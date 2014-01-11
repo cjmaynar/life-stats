@@ -40,7 +40,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # External apps
+    'debug_toolbar',
     'djangobower',
+    # Local apps
+    'lifestats',
+    'core',
+    'users',
     'events',
 )
 
@@ -97,3 +103,5 @@ STATICFILES_FINDERS = (
 BOWER_INSTALLED_APPS = (
     'bootstrap',
 )
+
+INTERNAL_IPS = '192.168.1.9'
