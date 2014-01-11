@@ -5,5 +5,12 @@
 
 {% block content %}
 <h1>Hi</h1>
+<ul>
+{% for event in events %}
+    <li><a href="{% url 'event_detail' event.id %}">{{ event }}</a></li> 
+{% empty %}
+    <li>No events</li>
+{% endfor %}
+</ul>
 <p><a href="{% url 'event_create' %}">Create Event</a></p>
 {% endblock %}

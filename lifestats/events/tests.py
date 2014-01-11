@@ -7,38 +7,43 @@ from django.test import TestCase, Client
 from .models import Event, Occurence, Category
 
 class EventTest(TestCase):
+    client = Client()
+    user = None
+
     @classmethod
     def setUpClass(cls):
-        User.objects.create_user(username='test', password='test')
-
-    def test_event(self):
-        user = User.objects.get(id=1)
-        category = Category.objects.get_or_create(name='First Category')
-        occurrence = Occurence.objects.get_or_create(date=datetime.date.today())
-
+        cls.user = User.objects.create_user(username='test', password='test')
         event = Event()
-        event.user = user
-        event.name = "First"
-        event.category = category[0]
-        event.occurrences = occurrence[0]
+        event.user = cls.user
+        event.name = "First Event"
+        event.category = Category.objects.create(name="FirstCategory")
+
+        today = datetime.date.today()
+        event.occurrences = Occurence.objects.create(date=today)
         event.save()
-        self.assertIsNotNone(event.pk)
+
+    def setUp(self):
+        self.client.login(username='test', password='test')
 
     def test_events_view(self):
-        client = Client()
-        response = client.get(reverse('events'))
+        response = self.client.get(reverse('events'))
+        self.assertTrue(response.status_code, 200)
+
+    def test_event_detail(self):
+        event = Event.objects.first()
+        data = {
+            'pk': event.id
+        }
+        response = self.client.get(reverse('event_detail', kwargs=data))
         self.assertTrue(response.status_code, 200)
 
     def test_create_event(self):
-        user = User.objects.get(username='test')
         data = {
-            'user' : user.id,
+            'user' : self.user.id,
             'name' : 'TestEvent',
             'occurences': '2014-1-1',
             'category': 'TestCategory'
         }
 
-        client = Client()
-        client.login(username='test', password='test')
-        response = client.post(reverse('event_create'), data)
+        response = self.client.post(reverse('event_create'), data)
         self.assertTrue(response.status_code, 302)

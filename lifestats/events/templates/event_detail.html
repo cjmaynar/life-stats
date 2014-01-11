@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}{{ event.name }}{% endblock %}
+{% block events_active %}class="active"{% endblock %}
+
+{% block content %}
+<h1>{{ event.name }}</h1>
+<p>Event Details</p>
+{% endblock %}
