@@ -9,12 +9,12 @@ from .models import Event, Occurence, Category
 class CreateEventForm(forms.ModelForm):
     user = forms.ModelChoiceField(widget=forms.widgets.HiddenInput, queryset=User.objects.all())
     occurrences = forms.CharField()
-    category = forms.CharField()
+    category = forms.CharField(widget=forms.TextInput(attrs={'class': 'typeahead'}))
     
     def clean_occurrences(self):
         data = self.cleaned_data['occurrences']
         try:
-            date = datetime.datetime.strptime(data, '%Y-%m-%d')
+            date = datetime.datetime.strptime(data, '%m/%d/%Y')
         except ValueError:
             raise forms.ValidationError("Incorrect date format")
 

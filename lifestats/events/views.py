@@ -1,8 +1,12 @@
+import json
+
 from braces.views import LoginRequiredMixin
 
 from django.core.urlresolvers import reverse
+from django.core import serializers
+from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import View, ListView, DetailView, CreateView
 
 from .models import Event, Occurence, Category
 from .forms import CreateEventForm
@@ -30,3 +34,13 @@ class CreateEvent(LoginRequiredMixin, CreateView):
 
     def get_initial(self):
         return { 'user': self.request.user }
+
+class Typeahead(LoginRequiredMixin, View):
+    def get(self, request):
+        categories = Category.objects.all()
+        data = []
+        for category in categories:
+            data.append(category.name)
+
+
+        return HttpResponse(json.dumps(data), content_type="application/json")

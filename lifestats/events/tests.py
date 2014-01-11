@@ -13,12 +13,12 @@ class EventTest(TestCase):
     @classmethod
     def setUpClass(cls):
         cls.user = User.objects.create_user(username='test', password='test')
+        today = datetime.date.today()
+
         event = Event()
         event.user = cls.user
         event.name = "First Event"
         event.category = Category.objects.create(name="FirstCategory")
-
-        today = datetime.date.today()
         event.occurrences = Occurence.objects.create(date=today)
         event.save()
 
