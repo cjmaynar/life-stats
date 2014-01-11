@@ -8,16 +8,16 @@ class Event(models.Model):
     curious how often you do'''
     user = models.ForeignKey(User)
     name = models.CharField(max_length=255)
-    occurrences = models.ManyToManyField('Occurence', related_name="events")
-    category = models.ForeignKey('Category')
+    occurrences = models.ForeignKey('Occurence', related_name="events")
+    category = models.ForeignKey('Category', related_name="events")
+
+    def __unicode__(self):
+        return self.name
 
 
 class Occurence(models.Model):
     '''The dates you did this event'''
     date = models.DateField()
-
-    def __unicode__(self):
-        return self.date.isoformat()
 
 
 class Category(models.Model):
