@@ -8,7 +8,7 @@ class Event(models.Model):
     curious how often you do'''
     user = models.ForeignKey(User)
     name = models.CharField(max_length=255)
-    occurrences = models.ForeignKey('Occurence', related_name="events")
+    occurrences = models.ManyToManyField('Occurence', related_name="events")
     category = models.ForeignKey('Category', related_name="events")
 
     def __unicode__(self):

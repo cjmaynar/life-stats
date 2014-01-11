@@ -105,6 +105,7 @@ BOWER_INSTALLED_APPS = (
     'bootstrap',
     'jquery-ui',
     'typeahead.js',
+    'typeahead.js-bootstrap.css',
 )
 
 INTERNAL_IPS = '192.168.1.9'

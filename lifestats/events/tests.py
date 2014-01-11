@@ -19,7 +19,8 @@ class EventTest(TestCase):
         event.user = cls.user
         event.name = "First Event"
         event.category = Category.objects.create(name="FirstCategory")
-        event.occurrences = Occurence.objects.create(date=today)
+        event.save()
+        event.occurrences.add(Occurence.objects.create(date=today))
         event.save()
 
     def setUp(self):

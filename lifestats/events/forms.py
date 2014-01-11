@@ -18,7 +18,7 @@ class CreateEventForm(forms.ModelForm):
         except ValueError:
             raise forms.ValidationError("Incorrect date format")
 
-        return Occurence.objects.get_or_create(date=date)[0]
+        return [Occurence.objects.get_or_create(date=date)[0]]
         
     def clean_category(self):
         category = self.cleaned_data['category']
