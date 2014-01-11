@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Create Event{% endblock %}
+
+{% block content %}
+<h1>Create Event</h1>
+<p>Have you done something recently worth tracking? Add it here.</p>
+<form role="form" class="form" method="post" action="{% url 'event_create' %}">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <p><input type="submit" class="btn btn-primary" value="Create" /></p>
+</form>
+{% endblock %}

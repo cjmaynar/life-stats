@@ -16,8 +16,14 @@ class Occurence(models.Model):
     '''The dates you did this event'''
     date = models.DateField()
 
+    def __unicode__(self):
+        return self.date.isoformat()
+
 
 class Category(models.Model):
     '''Events belong to a category, such as personal
     care, or something similar'''
     name = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
