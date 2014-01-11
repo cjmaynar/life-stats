@@ -1,7 +1,8 @@
 import datetime
 
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.core.urlresolvers import reverse
+from django.test import TestCase, Client
 
 from .models import Event, Occurence, Category
 
@@ -23,3 +24,8 @@ class EventTest(TestCase):
         self.assertIsNotNone(event.pk)
         event.occurrences.add(occurrence[0])
         self.assertNotEqual(event.occurrences.all(), [])
+
+    def test_events_view(self):
+        client = Client()
+        response = client.get(reverse('events'))
+        self.assertTrue(response.status_code, 200)
