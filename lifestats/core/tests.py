@@ -17,3 +17,6 @@ class RegisterTest(TestCase):
             user = User.objects.get(username="newUser")
         except DoesNotExist:
             self.fail("No user created")
+
+        # Ensure the user's password was hashed
+        self.assertNotEqual(user.password, 'newPass')

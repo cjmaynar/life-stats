@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # External apps
+    'django_extensions',
     'debug_toolbar',
     'djangobower',
     # Local apps

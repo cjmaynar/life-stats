@@ -16,4 +16,3 @@ class CreateEvent(LoginRequiredMixin, CreateView):
 
     def get_initial(self):
         return { 'user': self.request.user }
-
