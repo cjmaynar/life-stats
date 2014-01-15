@@ -4,13 +4,15 @@
 {% block events_active %}class="active"{% endblock %}
 
 {% block content %}
-<h1>Hi</h1>
+<h1>Your Events</h1>
+<p>You&rsquo;re tracking a total of {{ events.count }} event{{ events.count|pluralize:'s' }}.</p>
 <ul>
 {% for event in events %}
-    <li><a href="{% url 'event_detail' event.id %}">{{ event }}</a></li> 
+<li><a href="{% url 'event_detail' event.id %}">{{ event }}</a> &ndash; done {{ event.occurrences.all.count }} time{{ event.occurrences.all.count|pluralize }}.</li> 
 {% empty %}
     <li>No events</li>
 {% endfor %}
 </ul>
+<h2>Something new to add?</h2>
 <p><a href="{% url 'event_create' %}">Create Event</a></p>
 {% endblock %}

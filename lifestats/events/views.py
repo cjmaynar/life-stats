@@ -12,6 +12,7 @@ from .models import Event, Occurence, Category
 from .forms import CreateEventForm
 
 class Events(LoginRequiredMixin, ListView):
+    '''Some basic info about all a user's events'''
     template_name = "events.html"
     model = Event
 
@@ -22,11 +23,13 @@ class Events(LoginRequiredMixin, ListView):
 
 
 class EventDetail(LoginRequiredMixin, DetailView):
+    '''See the detailed information for a specific event'''
     template_name = "event_detail.html"
     model = Event
 
 
 class CreateEvent(LoginRequiredMixin, CreateView):
+    '''Used to generate new events'''
     template_name = "create_event.html"
     model = Event
     form_class = CreateEventForm
@@ -36,11 +39,7 @@ class CreateEvent(LoginRequiredMixin, CreateView):
         return { 'user': self.request.user }
 
 class Typeahead(LoginRequiredMixin, View):
+    '''A AJAX view for generating the Typeahead dropdown'''
     def get(self, request):
-        categories = Category.objects.all()
-        data = []
-        for category in categories:
-            data.append(category.name)
-
-
+        data = [c.name for c in Category.objects.all()]
         return HttpResponse(json.dumps(data), content_type="application/json")

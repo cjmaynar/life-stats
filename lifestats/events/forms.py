@@ -27,5 +27,10 @@ class CreateEventForm(forms.ModelForm):
 
         return Category.objects.get_or_create(name=category)[0]
 
-    class Meta():
+    class Meta:
         model = Event
+
+
+class AddOccuranceForm(forms.ModelForm):
+    class Meta:
+        model = Occurence

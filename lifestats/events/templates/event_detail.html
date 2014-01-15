@@ -5,5 +5,17 @@
 
 {% block content %}
 <h1>{{ event.name }}</h1>
-<p>Event Details</p>
+{% for o in event.occurrences.all %}
+    {% if forloop.first %}
+    <p>You&rsquo;ve done this a total of {{ event.occurrences.all.count }} times before</p>
+    <ul>
+    {% endif %}
+        <li>{{ o.date }}</li>
+    {% if forloop.last %}
+    </ul>
+    {% endif %}
+{% endfor %}
+
+<h2>Add new occurrence</h2>
+<p>Have you done <strong>{{ event.name }}</strong> recently? Add another date below.</p>
 {% endblock %}

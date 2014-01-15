@@ -19,6 +19,9 @@ class Occurence(models.Model):
     '''The dates you did this event'''
     date = models.DateField()
 
+    class Meta:
+        ordering = ['-date']
+
 
 class Category(models.Model):
     '''Events belong to a category, such as personal
