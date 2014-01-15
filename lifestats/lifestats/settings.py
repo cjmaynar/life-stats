@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'debug_toolbar',
     'djangobower',
+    'crispy_forms',
     # Local apps
     'lifestats',
     'core',
@@ -107,5 +108,7 @@ BOWER_INSTALLED_APPS = (
     'typeahead.js',
     'typeahead.js-bootstrap.css',
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 INTERNAL_IPS = '192.168.1.9'

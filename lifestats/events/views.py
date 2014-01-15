@@ -6,10 +6,10 @@ from django.core.urlresolvers import reverse
 from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import View, ListView, DetailView, CreateView
+from django.views.generic import View, ListView, DetailView, CreateView, FormView
 
 from .models import Event, Occurence, Category
-from .forms import CreateEventForm
+from .forms import CreateEventForm, AddOccuranceForm
 
 class Events(LoginRequiredMixin, ListView):
     '''Some basic info about all a user's events'''
@@ -22,10 +22,15 @@ class Events(LoginRequiredMixin, ListView):
         return context
 
 
-class EventDetail(LoginRequiredMixin, DetailView):
+class EventDetail(LoginRequiredMixin, View):
     '''See the detailed information for a specific event'''
     template_name = "event_detail.html"
-    model = Event
+
+    def get(self, request, *args, **kwargs):
+        context = {}
+        context['event'] = Event.objects.get(pk=self.kwargs.get('pk'))
+        context['form'] = AddOccuranceForm()
+        return render(request, self.template_name, context)
 
 
 class CreateEvent(LoginRequiredMixin, CreateView):

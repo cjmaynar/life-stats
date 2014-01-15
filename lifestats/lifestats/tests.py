@@ -5,7 +5,6 @@ from django.test import TestCase, Client
 
 class HomeTest(TestCase):
     client = Client()
-    user = None
 
     @classmethod
     def setUpClass(cls):
