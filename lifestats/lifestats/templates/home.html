@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
 {% block title %}LifeStats{% endblock %}
-{% block home_active %}class="active"{% endblock %}
 
 {% block content %}
 <h1>LifeStats</h1>
-<p>Enter common events in your life to figure out how often you perform these actions.</p>
+<p>Have you ever wondered how many haircuts you get in a year? How about how many times you&rsquo;ve taken your car in for a service? How often you go to the doctor?</p>
+<h2>Start Tracking Life Events</h2>
+It&rsquo;s time to find out. To get started, <a href="{% url 'register' %}">Register</a> a new account and start adding events!</p>
+
+<h3>Learn Your Habbits</h3>
+<p>The more you use LifeStats, the better understanding of your life you gain. As patterns form you can get notified of things you&rsquo;ll have to do again soon, and should you miss an repeated event, you can get reminders.</p>
 {% endblock %}
