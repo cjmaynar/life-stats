@@ -7,9 +7,9 @@ class Event(models.Model):
     buying groceries, or anything else you're
     curious how often you do'''
     user = models.ForeignKey(User)
-    name = models.CharField(max_length=255)
-    occurrences = models.ManyToManyField('Occurence', related_name="events")
-    category = models.ForeignKey('Category', related_name="events")
+    name = models.CharField(max_length=255, help_text="What did you do?")
+    occurrences = models.ManyToManyField('Occurence', related_name="events", help_text="When did you do this?")
+    category = models.ForeignKey('Category', related_name="events", help_text="What category does this belong to?")
 
     def __unicode__(self):
         return self.name

@@ -11,8 +11,8 @@ from .models import Event, Occurence, Category
 
 class CreateEventForm(forms.ModelForm):
     user = forms.ModelChoiceField(widget=forms.widgets.HiddenInput, queryset=User.objects.all())
-    occurrences = forms.CharField()
-    category = forms.CharField(widget=forms.TextInput(attrs={'class': 'typeahead'}))
+    occurrences = forms.CharField(help_text="When did you do this?")
+    category = forms.CharField(widget=forms.TextInput(attrs={'class': 'typeahead'}), help_text="What category does this belong to?")
     
     def clean_occurrences(self):
         data = self.cleaned_data['occurrences']

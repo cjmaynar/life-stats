@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}Login{% endblock %}
 
@@ -6,12 +7,10 @@
 <h1>Login</h1>
 <form role="form" class="form" method="post" action="{% url 'django.contrib.auth.views.login' %}">
 {% csrf_token %}
-<table>
-    {{ form }}
-</table>
+{{ form|crispy }}
 
 <p><input type="submit" class="btn btn-success" value="Login" />
-<a class="btn btn-primary" href="{% url 'register' %}">Register</a>
+or <a class="btn btn-primary" href="{% url 'register' %}">Register</a>
 <input type="hidden" name="next" value="{{ next }}" /></p>
 </form>
 {% endblock %}
