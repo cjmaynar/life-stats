@@ -107,6 +107,7 @@ BOWER_INSTALLED_APPS = (
     'jquery-ui',
     'typeahead.js',
     'typeahead.js-bootstrap.css',
+    'nvd3',
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

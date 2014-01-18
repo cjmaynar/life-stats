@@ -1,10 +1,26 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Events{% endblock %}
 {% block events_active %}class="active"{% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'nvd3/nv.d3.min.css' %}" media="screen" />
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'd3/d3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'nvd3/nv.d3.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/events.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <h1>Your Events</h1>
+
+<div id="frequent-events">
+<svg style="height:500px;"></svg>
+</div>
+
 <p>You&rsquo;re tracking a total of {{ events.count }} event{{ events.count|pluralize:'s' }}.</p>
 <ul>
 {% for event in events %}

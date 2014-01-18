@@ -22,6 +22,17 @@ class Events(LoginRequiredMixin, ListView):
         return context
 
 
+class EventData(LoginRequiredMixin, View):
+    def get(self, request):
+        events = Event.objects.filter(user=request.user)
+        events = [{'label': e.name, 'value': e.occurrences.count()} for e in events]
+
+        data = {}
+        data['key'] = 'Frequent Events'
+        data['values'] = events
+        return HttpResponse(json.dumps([data]), content_type="application/json")
+
+
 class EventDetail(LoginRequiredMixin, View):
     '''See the detailed information for a specific event'''
     template_name = "event_detail.html"
