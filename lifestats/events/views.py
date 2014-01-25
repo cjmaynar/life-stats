@@ -86,3 +86,19 @@ class Typeahead(LoginRequiredMixin, View):
     def get(self, request):
         data = [c.name for c in Category.objects.all()]
         return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+class EventCategories(LoginRequiredMixin, ListView):
+    '''Some basic info about all a user's events'''
+    template_name = "event_categories.html"
+    model = Event
+
+    def get_context_data(self, **kwargs):
+        context = super(EventCategories, self).get_context_data(**kwargs)
+        events = Event.objects.select_related().filter(user=self.request.user).order_by('category__name')
+        context['categories'] = set([e.category for e in events])
+        return context
+
+class EventCategory(LoginRequiredMixin, DetailView):
+    template_name = "event_category.html"
+    model = Category

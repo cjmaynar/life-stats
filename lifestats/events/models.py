@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.text import slugify
 
 class Event(models.Model):
     '''Events are things that happen frequently in
@@ -26,7 +27,13 @@ class Occurence(models.Model):
 class Category(models.Model):
     '''Events belong to a category, such as personal
     care, or something similar'''
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(unicode(self.name))
+        super(Category, self).save()
 
     def __unicode__(self):
         return self.name

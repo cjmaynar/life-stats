@@ -8,20 +8,10 @@ from .models import Event, Occurence, Category
 
 class EventTest(TestCase):
     client = Client()
-    user = None
-
-    @classmethod
-    def setUpClass(cls):
-        cls.user = User.objects.create_user(username='test', password='test')
-        today = datetime.date.today()
-
-        event = Event()
-        event.user = cls.user
-        event.name = "First Event"
-        event.category = Category.objects.create(name="FirstCategory")
-        event.save()
-        event.occurrences.add(Occurence.objects.create(date=today))
-        event.save()
+    fixtures = [
+        'events/fixtures/events_testdata.json',
+        'events/fixtures/auth_testdata.json',
+    ]
 
     def setUp(self):
         self.client.login(username='test', password='test')
@@ -37,12 +27,13 @@ class EventTest(TestCase):
         self.assertTrue(response.status_code, 200)
 
     def test_create_event(self):
+        user = User.objects.get(username='test')
         data = {
-            'user' : self.user.id,
+            'user' : user.id,
             'name' : 'TestEvent',
-            'occurences': '2014-1-1',
+            'occurrences': '01/01/2014',
             'category': 'TestCategory'
         }
 
         response = self.client.post(reverse('event_create'), data)
-        self.assertTrue(response.status_code, 302)
+        self.assertEqual(Event.objects.all().count(), 3)

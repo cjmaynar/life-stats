@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Your Categories{% endblock %}
+
+{% block event_categories_active %}class="active"{% endblock %}
+
+{% block content %}
+<h1>Your Categories</h1>
+<p>You&rsquo;ve used the following categories:</p>
+{% for category in categories %}
+{% if forloop.first %}
+<ul>
+{% endif %}
+<li><a href="{% url 'event_category' category.slug %}">{{ category.name }}</a></li>
+{% if forloop.last %}
+</ul>
+{% endif %}
+{% endfor %}
+{% endblock %}

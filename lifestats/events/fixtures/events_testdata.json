@@ -1,0 +1,48 @@
+[
+{
+    "pk": 1, 
+    "model": "events.event", 
+    "fields": {
+        "category": 1, 
+        "occurrences": [
+            1
+        ], 
+        "user": 1, 
+        "name": "first event"
+    }
+},
+{
+    "pk": 2, 
+    "model": "events.event", 
+    "fields": {
+        "category": 1, 
+        "occurrences": [
+            2
+        ], 
+        "user": 1, 
+        "name": "second event"
+    }
+},
+{
+    "pk": 1, 
+    "model": "events.occurence", 
+    "fields": {
+        "date": "2014-01-01"
+    }
+},
+{
+    "pk": 2, 
+    "model": "events.occurence", 
+    "fields": {
+        "date": "2014-01-02"
+    }
+},
+{
+    "pk": 1, 
+    "model": "events.category", 
+    "fields": {
+        "name": "first category", 
+        "slug": "first-category"
+    }
+}
+]

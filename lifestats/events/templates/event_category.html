@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block event_categories_active %}class="active"{% endblock %}
+
+{% block content %}
+<h1>{{ category.name }}</h1>
+{% endblock %}
