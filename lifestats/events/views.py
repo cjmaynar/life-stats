@@ -25,11 +25,10 @@ class Events(LoginRequiredMixin, ListView):
 class EventData(LoginRequiredMixin, View):
     def get(self, request):
         events = Event.objects.filter(user=request.user)
-        events = [{'label': e.name, 'value': e.occurrences.count()} for e in events]
 
         data = {}
         data['key'] = 'Frequent Events'
-        data['values'] = events
+        data['values'] = [{'label': e.name, 'value': e.occurrences.count()} for e in events]
         return HttpResponse(json.dumps([data]), content_type="application/json")
 
 

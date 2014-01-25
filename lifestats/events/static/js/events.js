@@ -5,7 +5,7 @@ $(document).ready(function() {
             .y(function(d) { return d.value })
             .staggerLabels(true)
             .tooltips(false)
-            .showValues(true)
+            .showValues(true);
 
         d3.select('#frequent-events svg')
         .datum(frequentevents())
