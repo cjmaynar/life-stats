@@ -8,7 +8,7 @@ from .views import HomeView
 
 urlpatterns = patterns('',
     url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^accounts/logout/', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^accounts/logout/', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
     url(r'^accounts/login/', 'django.contrib.auth.views.login', {'template_name':'login.html'}, name='login'),
     url(r'^accounts/register/$', RegisterView.as_view(), name='register'),
     url(r'^admin/', include(admin.site.urls)),

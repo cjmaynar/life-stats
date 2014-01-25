@@ -19,7 +19,7 @@ class Events(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(Events, self).get_context_data(**kwargs)
-        context['events'] = Event.objects.filter(user=self.request.user)
+        context['events'] = Event.objects.filter(user=self.request.user)[:10]
         return context
 
 
@@ -45,7 +45,7 @@ class EventDetail(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         context = {}
-        event = Event.objects.get(pk=self.kwargs.get('pk'))
+        event = Event.objects.get(slug=self.kwargs.get('slug'))
         form = AddOccuranceForm(request.POST)
         if form.is_valid():
             occurence = form.save()

@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}{{ category.name|title }}{% endblock %}
 
 {% block event_categories_active %}class="active"{% endblock %}
 
 {% block content %}
-<h1>{{ category.name }}</h1>
+<h1>{{ category.name|title }}</h1>
+<p>There are {{ category.events.count }} events in this category</p>
 {% endblock %}
