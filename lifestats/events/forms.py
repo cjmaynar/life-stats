@@ -13,6 +13,13 @@ class CreateEventForm(forms.ModelForm):
     user = forms.ModelChoiceField(widget=forms.widgets.HiddenInput, queryset=User.objects.all())
     occurrences = forms.CharField(label="Last Done", help_text="When did you do this?")
     category = forms.CharField(widget=forms.TextInput(attrs={'class': 'typeahead'}), help_text="What category does this belong to?")
+
+    def __init__(self, *args, **kwargs):
+        super(CreateEventForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'create_event'
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Create'))
     
     def clean_occurrences(self):
         data = self.cleaned_data['occurrences']
@@ -25,7 +32,7 @@ class CreateEventForm(forms.ModelForm):
         
     def clean_category(self):
         category = self.cleaned_data['category']
-        if not re.match('^[a-zA-Z0-9]*$', category):
+        if not re.match('^[a-zA-Z0-9 ]*$', category):
             raise forms.ValidationError("Invalid category name")
 
         return Category.objects.get_or_create(name=category)[0]

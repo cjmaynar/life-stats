@@ -5,4 +5,7 @@ $(document).ready(function() {
         prefetch: '/events/typeahead',
         limit: 10
     });
+
+    //Fix positioning issue with the typeahead hint
+    $('.tt-hint').addClass('form-control');
 });
