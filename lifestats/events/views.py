@@ -39,7 +39,7 @@ class EventDetail(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         context = {}
-        context['event'] = Event.objects.get(pk=self.kwargs.get('pk'))
+        context['event'] = Event.objects.get(slug=self.kwargs.get('slug'))
         context['form'] = AddOccuranceForm()
         return render(request, self.template_name, context)
 

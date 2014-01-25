@@ -17,18 +17,27 @@
 {% block content %}
 <h1>Your Events</h1>
 
+{% if events.count != 0 %}
 <div id="frequent-events">
 <svg style="height:500px; width:500px;"></svg>
 </div>
+{% endif %}
 
-<p>You&rsquo;re tracking a total of {{ events.count }} event{{ events.count|pluralize:'s' }}.</p>
-<ul>
 {% for event in events %}
-<li><a href="{% url 'event_detail' event.id %}">{{ event }}</a> &ndash; done {{ event.occurrences.all.count }} time{{ event.occurrences.all.count|pluralize }}.</li> 
-{% empty %}
-    <li>No events</li>
+    {% if forloop.first %}
+        <p>You&rsquo;re tracking a total of {{ events.count }} event{{ events.count|pluralize:'s' }}.</p>
+        <ul>
+    {% endif %}
+        <li><a href="{% url 'event_detail' event.slug %}">{{ event }}</a> &ndash; done {{ event.occurrences.all.count }} time{{ event.occurrences.all.count|pluralize }}.</li> 
+    {% if forloop.last %}
+        </ul>
+    {% endif %}
+
+    {% empty %}
+        <p>You haven&rsquo;t added any events yet.</p>
 {% endfor %}
 </ul>
 <h2>Something new to add?</h2>
+<p>Have you done something worth tracking?<p>
 <p><a href="{% url 'event_create' %}">Create Event</a></p>
 {% endblock %}

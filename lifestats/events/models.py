@@ -9,8 +9,14 @@ class Event(models.Model):
     curious how often you do'''
     user = models.ForeignKey(User)
     name = models.CharField(max_length=255, help_text="What did you do?")
+    slug = models.SlugField(max_length=25)
     occurrences = models.ManyToManyField('Occurence', related_name="events", help_text="When did you do this?")
     category = models.ForeignKey('Category', related_name="events", help_text="What category does this belong to?")
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(unicode(self.name))
+        return super(Event, self).save()
 
     def __unicode__(self):
         return self.name
@@ -21,7 +27,7 @@ class Occurence(models.Model):
     date = models.DateField()
 
     class Meta:
-        ordering = ['-date']
+        ordering = ['date']
 
 
 class Category(models.Model):

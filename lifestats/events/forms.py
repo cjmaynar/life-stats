@@ -39,6 +39,7 @@ class CreateEventForm(forms.ModelForm):
 
     class Meta:
         model = Event
+        exclude = ('slug',)
 
 
 class AddOccuranceForm(forms.ModelForm):

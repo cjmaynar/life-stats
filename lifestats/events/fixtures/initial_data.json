@@ -8,7 +8,8 @@
             1
         ], 
         "user": 1, 
-        "name": "first event"
+        "name": "first event",
+        "slug": "first-event"
     }
 },
 {
@@ -20,7 +21,8 @@
             2
         ], 
         "user": 1, 
-        "name": "second event"
+        "name": "second event",
+        "slug": "second-event"
     }
 },
 {

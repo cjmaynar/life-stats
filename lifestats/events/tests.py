@@ -9,8 +9,8 @@ from .models import Event, Occurence, Category
 class EventTest(TestCase):
     client = Client()
     fixtures = [
-        'events/fixtures/events_testdata.json',
-        'events/fixtures/auth_testdata.json',
+        'users/fixtures/initial_data.json',
+        'events/fixtures/initial_data.json',
     ]
 
     def setUp(self):
@@ -22,7 +22,7 @@ class EventTest(TestCase):
 
     def test_event_detail(self):
         event = Event.objects.first()
-        data = { 'pk': event.id }
+        data = { 'slug': event.slug }
         response = self.client.get(reverse('event_detail', kwargs=data))
         self.assertTrue(response.status_code, 200)
 
