@@ -9,8 +9,8 @@ from .models import Event, Occurence, Category
 class EventTest(TestCase):
     client = Client()
     fixtures = [
-        'users/fixtures/initial_data.json',
-        'events/fixtures/initial_data.json',
+        'users/fixtures/users.json',
+        'events/fixtures/events.json',
     ]
 
     def setUp(self):

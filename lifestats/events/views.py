@@ -81,6 +81,7 @@ class CreateEvent(LoginRequiredMixin, CreateView):
         messages.error(self.request, "Invalid Form")
         return super(CreateEvent, self).form_invalid(form)
 
+
 class Typeahead(LoginRequiredMixin, View):
     '''A AJAX view for generating the Typeahead dropdown'''
     def get(self, request):
@@ -98,6 +99,7 @@ class EventCategories(LoginRequiredMixin, ListView):
         events = Event.objects.select_related().filter(user=self.request.user).order_by('category__name')
         context['categories'] = set([e.category for e in events])
         return context
+
 
 class EventCategory(LoginRequiredMixin, DetailView):
     template_name = "event_category.html"

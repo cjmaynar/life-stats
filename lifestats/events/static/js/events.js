@@ -1,8 +1,8 @@
 $(document).ready(function() {
     nv.addGraph(function() {
         var chart = nv.models.discreteBarChart()
-            .x(function(d) { return d.label })
-            .y(function(d) { return d.value })
+            .x(function(d) { return d.label ; })
+            .y(function(d) { return d.value ; })
             .staggerLabels(true)
             .tooltips(false)
             .showValues(true);

@@ -10,9 +10,10 @@ from django.contrib.auth.models import User
 from .models import Event, Occurence, Category
 
 class CreateEventForm(forms.ModelForm):
+    name = forms.CharField(label="Description", help_text="What did you do?")
     user = forms.ModelChoiceField(widget=forms.widgets.HiddenInput, queryset=User.objects.all())
-    occurrences = forms.CharField(label="Last Done", help_text="When did you do this?")
-    category = forms.CharField(widget=forms.TextInput(attrs={'class': 'typeahead'}), help_text="What category does this belong to?")
+    occurrences = forms.CharField(label="Date of event", help_text="When did you do this?")
+    category = forms.CharField(widget=forms.TextInput(attrs={'class': 'typeahead'}), help_text="What type of thing is this?")
 
     def __init__(self, *args, **kwargs):
         super(CreateEventForm, self).__init__(*args, **kwargs)
