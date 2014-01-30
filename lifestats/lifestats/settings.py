@@ -41,15 +41,16 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # External apps
-    'django_extensions',
-    'debug_toolbar',
-    'djangobower',
+    'autofixture',
     'crispy_forms',
+    'debug_toolbar',
+    'django_extensions',
+    'djangobower',
     # Local apps
-    'lifestats',
     'core',
-    'users',
     'events',
+    'lifestats',
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (

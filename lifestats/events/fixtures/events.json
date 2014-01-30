@@ -1,50 +1,54 @@
 [
 {
-    "pk": 1, 
-    "model": "events.event", 
+    "pk": 1,
+    "model": "events.event",
     "fields": {
-        "category": 1, 
+        "category": 1,
         "occurrences": [
             1
-        ], 
-        "user": 1, 
+        ],
+        "user": 1,
         "name": "first event",
         "slug": "first-event"
     }
 },
 {
-    "pk": 2, 
-    "model": "events.event", 
+    "pk": 2,
+    "model": "events.event",
     "fields": {
-        "category": 1, 
+        "category": 1,
         "occurrences": [
             2
-        ], 
-        "user": 1, 
+        ],
+        "user": 1,
         "name": "second event",
         "slug": "second-event"
     }
 },
 {
-    "pk": 1, 
-    "model": "events.occurence", 
+    "pk": 3,
+    "model": "events.event",
     "fields": {
-        "date": "2014-01-01"
+        "category": 1,
+        "occurrences": [
+            3
+        ],
+        "user": 1,
+        "name": "thrid event",
+        "slug": "thrid-event"
     }
 },
 {
-    "pk": 2, 
-    "model": "events.occurence", 
+    "pk": 4,
+    "model": "events.event",
     "fields": {
-        "date": "2014-01-02"
-    }
-},
-{
-    "pk": 1, 
-    "model": "events.category", 
-    "fields": {
-        "name": "first category", 
-        "slug": "first-category"
+        "category": 1,
+        "occurrences": [
+            4
+        ],
+        "user": 1,
+        "name": "forth event",
+        "slug": "forth-event"
     }
 }
 ]

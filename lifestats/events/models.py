@@ -8,8 +8,8 @@ class Event(models.Model):
     buying groceries, or anything else you're
     curious how often you do'''
     user = models.ForeignKey(User)
-    name = models.CharField(max_length=255, help_text="What did you do?")
-    slug = models.SlugField(max_length=25)
+    name = models.CharField(max_length=25, help_text="What did you do?")
+    slug = models.SlugField(max_length=10)
     occurrences = models.ManyToManyField('Occurence', related_name="events", help_text="When did you do this?")
     category = models.ForeignKey('Category', related_name="events", help_text="What category does this belong to?")
 

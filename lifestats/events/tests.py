@@ -10,6 +10,8 @@ class EventTest(TestCase):
     client = Client()
     fixtures = [
         'users/fixtures/users.json',
+        'events/fixtures/occurrences.json',
+        'events/fixtures/categories.json',
         'events/fixtures/events.json',
     ]
 
@@ -36,4 +38,4 @@ class EventTest(TestCase):
         }
 
         response = self.client.post(reverse('event_create'), data)
-        self.assertEqual(Event.objects.all().count(), 3)
+        self.assertEqual(Event.objects.all().count(), 5)

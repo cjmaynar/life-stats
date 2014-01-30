@@ -22,7 +22,7 @@
 <h2>Top 10 Events</h2>
 <p>These are the things you do most frequently.</p>
 <div id="frequent-events">
-<svg style="height:500px; width:500px;"></svg>
+<svg style="height:300px; width:400px;"></svg>
 </div>
 {% endif %}
 
@@ -31,7 +31,7 @@
         <p>You&rsquo;re tracking a total of {{ events.count }} event{{ events.count|pluralize:'s' }}.</p>
         <ul>
     {% endif %}
-        <li><a href="{% url 'event_detail' event.slug %}">{{ event }}</a> &ndash; done {{ event.occurrences.all.count }} time{{ event.occurrences.all.count|pluralize }}.</li> 
+        <li><a href="{% url 'event_detail' event.slug %}">{{ event }}</a> &ndash; done {{ event.occurrences.all.count }} time{{ event.occurrences.all.count|pluralize }}.</li>
     {% if forloop.last %}
         </ul>
     {% endif %}

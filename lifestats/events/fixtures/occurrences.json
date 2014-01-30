@@ -1,0 +1,37 @@
+[
+{
+    "pk": 1,
+    "model": "events.occurence",
+    "fields": {
+        "date": "2014-01-01"
+    }
+},
+{
+    "pk": 2,
+    "model": "events.occurence",
+    "fields": {
+        "date": "2014-01-02"
+    }
+},
+{
+    "pk": 3,
+    "model": "events.occurence",
+    "fields": {
+        "date": "2014-01-03"
+    }
+},
+{
+    "pk": 4,
+    "model": "events.occurence",
+    "fields": {
+        "date": "2014-01-04"
+    }
+},
+{
+    "pk": 5,
+    "model": "events.occurence",
+    "fields": {
+        "date": "2014-01-05"
+    }
+}
+]
